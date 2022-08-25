@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+  {% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% comment %} <link href="{% static 'assets/css/output.css' %}" rel="stylesheet"> {% endcomment %}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;400;500&family=Lato:wght@100;400;700;900&family=Poppins:wght@600&display=swap" rel="stylesheet">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+
+          extend: {
+            colors: {
+              "Black-Olive":"#3D4543",
+              "Black":"#010000",
+              "Tickle-Me-Pink":"#F785AB",
+              "Celeste":"#9FF9EA",
+              "White":"#FDFDFD",
+              "BUff":"#F6E088",
+              "Celadon-blue":"#4C849F",
+              transparent:'transparent',
+            },
+            fontFamily:{
+              'lato':['lato','sans-serif'],
+              'inter':['inter','sans-serif'],
+              'poppins':['poppins','sans-serif']
+            },
+          }
+        }
+      }
+    </script>
+    <title>Register</title>
+</head>
+<body>
+  {% for message in messages %}
+  <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+    <strong>Alert!</strong> {{message}}
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+
+  {% endfor %}
+  
+    <div class=" w-screen h-screen custombg flex flex-col justify-center items-center bg-gradient-to-tr from-Tickle-Me-Pink to-Celeste">
+        <form action="/register" method="post"
+          class="flex flex-col  bg-White h-[75%] w-[400px] rounded-2xl  relative top-1/6 shadow-2xl "
+          
+        >
+        {% csrf_token %}
+         
+  
+          <h2 class="self-center font-bold text-3xl mt-6 ">Spliit</h2>
+  
+          <p
+            class="self-center
+                  text-slate-500 my-2 text-sm font-inter text-[18px] font-500 tracking-wide"
+          >
+            Let your financial woes go away
+          </p>
+  
+          
+  
+          <input
+            type="text"
+            name="fname"
+            id=""
+            required
+            placeholder="First Name"
+            class="self-center bg-transaprent w-3/4 border-b border-gray-300 mt-4 mb-4 text-left h-7 focus:outline-lightgray  text-xl font-bold rounded-md px-3"
+            value=""
+          />
+  
+          
+          <input
+            type="text"
+            name="lname"
+            required
+            id=""
+            placeholder="Last Name"
+            class="self-center bg-transparent w-3/4 border-b border-gray-300  mb-4 text-left h-7 focus:outline-lightgray text-xl font-bold rounded-md px-3"
+            value=""
+          />
+  
+          <input
+            type="number"
+            name="usernumber"
+            required
+            id=""
+            placeholder="User Name"
+            class="self-center bg-transparent w-3/4 border-b border-gray-300  mb-4 text-left h-7 focus:outline-lightgray text-xl font-bold rounded-md px-3"
+            value=""
+          />
+  
+          
+  
+          <input
+            type="email"
+            name="email"
+            required
+            id=""
+            placeholder="Email"
+            class="self-center bg-transparent w-3/4 border-b border-gray-300 text-left focus:outline-lightgray font-bold text-xl mb-4 rounded-md px-3"
+            value=""
+          />
+  
+          
+  
+          
+  
+          <input
+            type="password"
+            name="password"
+            required
+            id=""
+            placeholder="Password"
+            class="self-center bg-transparent w-3/4 border-b border-gray-300 text-left focus:outline-lightgray font-bold text-xl mb-4 rounded-md px-3"
+            value=""
+          />
+  
+       
+          <input
+            type="submit"
+            class="bg-lighgray rounded-md w-3/4 h-10 self-center mt-2 font-bold text-lg px-2  hover:bg-gradient-to-bl from-BUff to-Tickle-Me-Pink hover:text-Black-Olive  shadow-lg transition ease-in duration-100 hover:scale-105"
+            value="Register"
+          /> 
+          
+
+          <a href="/login" class="text-gray-600 ml-12 mt-2">
+            Already have an account?
+            <span class="text-blue-600 font-bold hover:text-blue-700">
+              Sign in
+            </span>
+          </a>
+        </form>
+        <footer class="z-10 mt-3 text-lg drop-shadow-md">
+          Made with <span class="text-red-500">&#10084;</span> by Shiva
+        </footer>
+      </div>
+</body>
+</html>

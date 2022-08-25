@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+  {% load static %}
+  
+
+  {% block body %}
+ 
+
+  
+    <div class="flex flex-col justify-center  font-bold w-[85%] h-screen   bg-[rgba(215,213,213,0.5)] relative left-[15%]">
+        
+        <div class="w-[75%] h-[85%] bg-gray absolute top-1 left-1 flex flex-col rounded-md shadow-md bg-White">
+          <div class="  w-full h-12  flex flex-row  items-center justify-between px-5 pr-10 rounded-t-md mt-1 border-b-2 py-2">
+            <h1>{{group.name}} </h1>
+            <h1> Number of members : {{total}} </h1>
+            
+            <button
+              data-modal-toggle="defaultModal"
+              class="text-lg border-2 border-lightgray px-3 h-8 rounded-full text-beige hover:shadow-lg bg-gradient-to-r from-Tickle-Me-Pink to-Celeste hover:scale-105 transition ease-in duration-150"
+              
+            >
+            {% if group.is_admin == True %}
+            <a href="{{group.id}}/add-member"> Add Member</a>
+            {% endif %}
+            </button>
+
+      
+            
+          </div>
+          
+          <div   class="text-xl overflow-scroll h-full">
+            {% for data in member %}
+            <div class="bg-White shadow-lg w-40 border-2 m-2 shadow-Celadon-blue rounded-xl" >
+                {% if data.amount != 0 %}
+                
+                <div class="p-2">
+                  <p class="text-sm">Paid By: {{data.user.get_full_name}}</p>
+                  <p class="text-sm text-[rgba(0,0,0,0.4)]">Amount : {{data.amount}}</p>
+                  <p class="text-sm text-[rgba(0,0,0,0.4)]">Description : {{data.desc}}</p>
+                </div>
+                {% endif %}
+
+            </div>
+            {% endfor %}
+          </div>
+
+
+          <div class="flex flex-col border-2 m-2 rounded-md">
+            <h1 class="self-center text-2xl mb-2">Add an expense </h1>
+            <form action="/sendmsg" method="post">
+              {% csrf_token %}
+              <div class="flex flex-col text-xl items-center">
+                <input
+                  type="number"
+                  name="amount"
+                  class="w-1/2 h-[10%] target:outline-gray-400 rounded-lg bg-transparent px-2 border-2 text-center"
+                  
+                  
+                  placeholder="Enter Amount"
+                />
+
+                <input
+                  type="text"
+                  name="desc"
+                  class="w-1/2 h-[10%] target:outline-gray-400 rounded-lg bg-transparent px-2 my-3 border-2 text-center"
+                  
+                  
+                  placeholder="Enter Desc"
+                />
+
+                <input
+                  type="hidden"
+                  name="group"
+                  value="{{group.id}}"
+                  class="w-full h-40 target:outline-gray-400 rounded-lg bg-transparent px-2 "
+                  id="exampleInputEmail1"
+                  aria-describedby="emailHelp"
+                  placeholder="Enter Desc"
+                />
+                <input type="submit" class="btn btn-primary" value="Add Expense" class="border-2 w-36 h-10 mb-2 rounded-full bg-gradient-to-r from-BUff to-Tickle-Me-Pink px-2"/>
+              </div>
+
+            </form>
+          </div>
+      </div>
+      <div class=" text-black rounded-md shadow-xl h-1/2 w-1/5 absolute left-[78%] flex flex-col items-center bg-White py-4 border-2" >
+      <h1 class="text-2xl mb-2 border-b-2 w-full text-center">Balances</h1>
+      {% for data in data %}
+      <p class="text-md">{{data.user__first_name}} - {{data.running_amount}}</p>
+      {% endfor %}
+      </div>
+    </div>
+      {% endblock body %}

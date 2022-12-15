@@ -9,12 +9,12 @@
     <div class="flex flex-col justify-center  font-bold w-[85%] h-screen   bg-[rgba(215,213,213,0.5)] relative left-[15%]">
         
         <div class="w-[75%] h-[85%] bg-gray absolute top-1 left-1 flex flex-col rounded-md shadow-md bg-White">
-          <div class="  w-full h-12  flex flex-row  items-center justify-between px-5 pr-10 rounded-t-md mt-1 border-b-2 py-2">
+          <div class="  w-full h-12  flex flex-row  items-center justify-between px-5 pr-10 rounded-t-md mt-1 border-b-2 py-2 text-2xl">
             <h1>{{group.name}} </h1>
             <h1> Number of members : {{total}} </h1>
-            
+            <div>
             <button
-              data-modal-toggle="defaultModal"
+              
               class="text-lg border-2 border-lightgray px-3 h-8 rounded-full text-beige hover:shadow-lg bg-gradient-to-r from-Tickle-Me-Pink to-Celeste hover:scale-105 transition ease-in duration-150"
               
             >
@@ -22,26 +22,49 @@
             <a href="{{group.id}}/add-member"> Add Member</a>
             {% endif %}
             </button>
+            <button
+              
+            class="text-lg border-2 border-lightgray px-3 h-8 rounded-full text-beige hover:shadow-lg bg-gradient-to-r from-Tickle-Me-Pink to-Celeste hover:scale-105 transition ease-in duration-150"  data-modal-toggle="exampleModal" 
+          >
+          {% if group.is_admin == True %}
+          <a href="{{group.id}}/deletegroup "> Delete Group</a>
+          {% endif %}
+          {% comment %} {% endcomment %}
+          </button>
+          <!-- Modal -->
 
-      
-            
+        </div>
+        
           </div>
-          
+
+
           <div   class="text-xl overflow-scroll h-full">
             {% for data in member %}
-            <div class="bg-White shadow-lg w-40 border-2 m-2 shadow-Celadon-blue rounded-xl" >
+            
                 {% if data.amount != 0 %}
-                
-                <div class="p-2">
-                  <p class="text-sm">Paid By: {{data.user.get_full_name}}</p>
-                  <p class="text-sm text-[rgba(0,0,0,0.4)]">Amount : {{data.amount}}</p>
-                  <p class="text-sm text-[rgba(0,0,0,0.4)]">Description : {{data.desc}}</p>
-                </div>
+                 {% if data.user.username == user.username %}
+                 <div class="bg-White shadow-lg w-40 border-2 m-2 shadow-Celadon-blue rounded-xl relative left-[2%] flex flex-col">
+                    <div class="p-2" >
+                        <p class="text-sm">Paid By: {{data.user.get_full_name}}</p>
+                        <p class="text-sm text-[rgba(0,0,0,0.4)]">Amount : {{data.amount}}</p>
+                        <p class="text-sm text-[rgba(0,0,0,0.4)]">Description : {{data.desc}}</p>
+                        <a href="/deleteexpense" class="text-sm text-Black-Olive flex justify-end hover:text-Tickle-Me-Pink">Delete</a>
+                    </div>
+                  </div>
+                 {% else %}
+                 <div class="bg-White shadow-lg w-40 border-2 m-2 shadow-Celadon-blue rounded-xl relative left-[80%]">
+                    <div class="p-2 ">
+                        <p class="text-sm">Paid By: {{data.user.get_full_name}}</p>
+                        <p class="text-sm text-[rgba(0,0,0,0.4)]">Amount : {{data.amount}}</p>
+                        <p class="text-sm text-[rgba(0,0,0,0.4)]">Description : {{data.desc}}</p>
+                    </div>
+                  </div>
                 {% endif %}
-
+                {% endif %}
+                {% endfor %}
             </div>
-            {% endfor %}
-          </div>
+            
+          
 
 
           <div class="flex flex-col border-2 m-2 rounded-md">

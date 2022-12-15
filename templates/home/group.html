@@ -1,35 +1,50 @@
-{% extends 'base.html' %}
-  {% load static %}
-  
-  {% block body %}
+{% extends 'base.html' %} {% load static %} {% block body %}
 
-  
-  
-    <div class="flex justify-center  font-bold w-[85%] h-screen   bg-[rgba(215,213,213,0.5)] relative left-[15%]" >
-        
-        <div class="w-[95%] h-[85%] bg-gray absolute top-1 left-1 flex flex-col rounded-md shadow-md bg-White overflow-scroll">
-          <div class="  w-full h-12 bg-red flex flex-row  items-center justify-between px-5 pr-10 rounded-t-md border-b-2 border-[rgba(24,24,24,0.5)]">
-            <h1 class="text-2xl text-transparent bg-clip-text bg-gradient-to-tr from-Black-Olive to-BUff">Groups</h1>
-            
-             <button
-              
-              class="text-lg border-2 border-lightgray px-3 h-8 rounded-full text-beige hover:shadow-lg bg-gradient-to-r from-Tickle-Me-Pink to-Celeste" >
-             <a href="/create-group" class=""> Create Group</a>
-            </button> 
-            </div>
-          
-  
-            {% for data in member %}
-            <div class="flex flex-col  self-center mt-3 gap-5 bg-beige w-1/2 h-[15%] rounded-md shadow-md px-5  z-10 border-2 justify-center bg-gradient-to-tr from-Tickle-Me-Pink to-BUff">
-            <div class="flex flex-col justify-center">
-              <span class="flex flex-row items-center">
-                <img src="{% static 'assets/user.png' %}" width="20px" alt="profile" class="text-sm" /> <h1>	&nbsp; <a href="group/{{data.0}}" >{{data.1 | safe}}</a> </h1>
-              </span>
-              <p class="text-sm mx-4 text-Celeste ml-7">Admin : Shiva {{data.group_id}}</p>
-            </div>
-          
-          </div>
-            {% endfor %}
-        </div>
+<div
+  class="flex justify-center font-bold w-[85%] h-screen bg-[rgba(215,213,213,0.5)] relative left-[15%]"
+>
+  <div
+    class="w-[95%] h-[85%] bg-gray absolute top-1 left-1 flex flex-col rounded-md shadow-md bg-White overflow-scroll"
+  >
+    <div
+      class="w-full h-12 bg-red flex flex-row items-center justify-between px-5 pr-10 rounded-t-md border-b-2 border-[rgba(24,24,24,0.5)]"
+    >
+      <h1
+        class="text-2xl text-transparent bg-clip-text bg-gradient-to-tr from-Black-Olive to-BUff"
+      >
+        Groups
+      </h1>
+
+      <button
+        class="text-lg border-2 border-lightgray px-3 h-8 rounded-full text-beige hover:shadow-lg bg-gradient-to-r from-Tickle-Me-Pink to-Celeste"
+      >
+        <a href="/create-group" class=""> Create Group</a>
+      </button>
+    </div>
+
+    {% for data in member %}
+    <div
+      class="flex flex-col self-center mt-3 gap-5 bg-beige w-1/2 h-[15%] rounded-md shadow-md px-5 z-10 border-2 justify-center bg-gradient-to-tr from-Tickle-Me-Pink to-BUff"
+    >
+      <div class="flex flex-col justify-center">
+        <span class="flex flex-row items-center">
+          <img
+            src="{% static 'assets/user.png' %}"
+            width="20px"
+            alt="profile"
+            class="text-sm"
+          />
+          <h1>&nbsp; <a href="group/{{data.0}}">{{data.1 | safe}}</a></h1>
+        </span>
+
+        {% if data.2 == True %}
+        <p class="text-sm mx-4 text-Celeste ml-7">
+          Admin: {{data.3}} {{data.4}}
+        </p>
+        {% endif %}
       </div>
-      {% endblock body %}
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock body %}

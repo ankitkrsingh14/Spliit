@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+  {% load static %}
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@100;400;500&family=Lato:wght@100;400;700;900&family=Poppins:wght@600&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="{% static 'assets/favicon_io/apple-touch-icon.png'%}"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="{% static 'assets/favicon_io/favicon-32x32.png'%}"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="{% static 'assets/favicon_io/favicon-16x16.png'%}"
+    />
+    <link
+      rel="manifest"
+      href="{% static 'assets/favicon_io/site.webmanifest'%}"
+    />
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              "Black-Olive": "#3D4543",
+              Black: "#010000",
+              "Tickle-Me-Pink": "#F785AB",
+              Celeste: "#9FF9EA",
+              White: "#FDFDFD",
+              BUff: "#F6E088",
+              "Celadon-blue": "#4C849F",
+              transparent: "transparent",
+            },
+            fontFamily: {
+              lato: ["lato", "sans-serif"],
+              inter: ["inter", "sans-serif"],
+              poppins: ["poppins", "sans-serif"],
+            },
+          },
+        },
+      };
+    </script>
+    <title>Welcome</title>
+  </head>
+  <body>
+    <div class="bg-Black w-screen h-screen">
+      <nav
+        class="flex flex-row justify-between w-full h-[8%] border-b-[1px] border-[rgba(255,255,255,0.3)] items-center px-10"
+      >
+        <h1
+          class="text-Celeste text-5xl tracking-wider drop-shadow-[0px_10px_10px_#F785AB] text-transparent bg-clip-text bg-gradient-to-r from-Celeste to-BUff font-semibold pl-10"
+        >
+          Spliit
+        </h1>
+        <!-- <div class=" flex justify-between w-1/2">
+                <ul class="flex flex-row justify-around w-full text-Celeste">
+                    <li>
+                        About Us
+                    </li>
+                    <li>
+                        Contact
+                    </li>
+                    <li>
+                        FAQ
+                    </li>
+                </ul>
+            </div> -->
+
+        <a
+          href="/login"
+          class="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-Celeste to-Tickle-Me-Pink mr-10"
+        >
+          Login
+        </a>
+      </nav>
+
+      <div class="content flex flex-row w-full h-[80%]">
+        <div
+          class="left-side text-White w-1/2 h-full flex flex-col justify-center px-20 border-r-[1px] border-[rgba(255,255,255,0.3)] border-b-[1px]"
+        >
+          <h1
+            class="font-poppins font-semibold tracking-wide text-5xl leading-tight mb-3"
+          >
+            Let spliiting bills be not your hassle use
+            <span
+              class="text-transparent bg-clip-text bg-gradient-to-r from-Celeste to-Tickle-Me-Pink"
+              >Spliit</span
+            >
+          </h1>
+          <p class="text-sm text-[rgba(255,255,255,0.5)] mb-4">
+            Spliiting bills is not an easy task. Let that headache go away with
+            spliit. Spliit makes it easy and hasslefree. So, why wait hit that
+            get started button.
+          </p>
+          <a
+            href="/register"
+            class="bg-transparent text-Black h-10 w-36 text-center py-2 font-bold tracking-wide bg-gradient-to-r from-Celeste to-Tickle-Me-Pink drop-shadow-md transition ease-in hover:relative bottom-1 hover:translate-x-1 duration-150"
+            >Get Started</a
+          >
+        </div>
+
+        <div
+          class="right-side w-[45%] h-full border-b-[1px] border-[rgba(255,255,255,0.3)] border-r-[1px]"
+        >
+          <!-- <div class="flex flex-col w-full h-full "> -->
+
+          <div
+            class="div1 border-b-[1px] border-[rgba(255,255,255,0.3)] h-1/3 flex flex-row"
+          >
+            <div
+              class="w-1/3 border-r-[1px] h-full border-[rgba(255,255,255,0.3)] text-White flex justify-center items-center px-10"
+            >
+              <p
+                class="text-xl text-transparent bg-clip-text bg-gradient-to-bl from-Celadon-blue to-BUff"
+              >
+                Spliit your bills like a pro
+              </p>
+            </div>
+            <div
+              class="w-1/3 border-r-[1px] h-full border-[rgba(255,255,255,0.3)]"
+            ></div>
+            <div
+              class="w-1/3 h-full border-[rgba(255,255,255,0.3)] flex justify-end items-end text-xl pl-10 text-transparent bg-clip-text bg-gradient-to-tl from-Black-Olive to-BUff font-semibold"
+            >
+              Make a smart move Sign up
+            </div>
+          </div>
+          <div class="div2 border-b-[1px] border-[rgba(255,255,255,0.3)] h-1/3">
+            <p
+              class="text-3xl font-bold relative top-8 left-8 text-transparent bg-clip-text bg-gradient-to-r from-Celeste"
+            >
+              Keep Expenses
+            </p>
+            <p
+              class="text-3xl font-bold relative top-16 left-1/2 text-transparent bg-clip-text bg-gradient-to-r from-Celeste to-[rgba(0,0,0,0.8)] w-fit"
+            >
+              Crystal Clear
+            </p>
+          </div>
+          <div class="div3 h-1/3">
+            <div
+              class="border-b-[1px] border-Celeste rotate-45 origin-left w-full"
+            ></div>
+            <div
+              class="border-b-[1px] border-Celeste rotate-45 origin-left w-full relative left-1/2"
+            ></div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="w-[95%] h-[12%] border-r-[1px] border-[rgba(255,255,255,0.3)] flex flex-col justify-center items-center"
+      >
+        <h1
+          class="text-transparent bg-clip-text bg-gradient-to-r from-Tickle-Me-Pink to-BUff text-2xl font-bold tracking-widest font-poppins"
+        >
+          Try it and let your financial woes go away
+        </h1>
+      </div>
+    </div>
+  </body>
+</html>
